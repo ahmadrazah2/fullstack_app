@@ -21,6 +21,9 @@ if frontend_url:
         frontend_url = f"https://{frontend_url}"
     origins.append(frontend_url)
 
+# Debug: Print allowed origins
+print(f"🔧 CORS Allowed Origins: {origins}")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
