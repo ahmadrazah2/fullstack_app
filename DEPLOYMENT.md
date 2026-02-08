@@ -8,7 +8,7 @@ You can deploy this application in two ways:
 
 ## Option 1: Automated Deployment (Blueprint)
 
-This method automatically creates the Database, Backend, and Frontend services and links them together.
+This method automatically creates the Database, Backend, and Frontend services.
 
 1.  Push your code to **GitHub**.
 2.  Go to the [Render Dashboard](https://dashboard.render.com/).
@@ -16,7 +16,13 @@ This method automatically creates the Database, Backend, and Frontend services a
 4.  Connect your GitHub repository.
 5.  Render will detect the `render.yaml` file.
 6.  Click **Apply**.
-7.  Wait for the deployment to finish.
+7.  Wait for the initial deployment to finish.
+8.  **Configure Environment Variables** (after services are created):
+    -   Go to the **Backend service** (`fastapi-backend`) -> Environment
+    -   Set `FRONTEND_URL` to your frontend URL (e.g., `https://nextjs-frontend.onrender.com`)
+    -   Go to the **Frontend service** (`nextjs-frontend`) -> Environment
+    -   Set `NEXT_PUBLIC_API_BASE` to your backend URL (e.g., `https://fastapi-backend.onrender.com`)
+9.  **Redeploy both services** to apply the new environment variables.
 
 **Note on Database Costs**: Render's Managed PostgreSQL is a paid service (after any trial period). You may need to upgrade your plan.
 
