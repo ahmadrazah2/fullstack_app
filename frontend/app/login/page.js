@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { loginUser } from "../../lib/api";
 
-export default function Login() {
+function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -60,5 +60,13 @@ export default function Login() {
                 Don't have an account? <a href="/register">Register</a>
             </p>
         </main>
+    );
+}
+
+export default function Login() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <LoginForm />
+        </Suspense>
     );
 }
