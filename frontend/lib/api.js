@@ -1,4 +1,8 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+let apiBase = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+if (!apiBase.startsWith("http")) {
+  apiBase = `https://${apiBase}`;
+}
+const API_BASE = apiBase;
 
 function getAuthHeaders() {
   const token = localStorage.getItem("access_token");

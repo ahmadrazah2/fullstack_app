@@ -14,7 +14,7 @@ services:
         fromService:
           type: web
           name: nextjs-frontend
-          property: url
+          property: host
 
   # Frontend Service
   - type: web
@@ -27,10 +27,10 @@ services:
         fromService:
           type: web
           name: fastapi-backend
-          property: url
+          property: host
 
 databases:
   - name: postgres-db
     databaseName: my_db
-    user: postgres
+    user: app_user
     plan: free # Note: Render's free tier for DB might be legacy or limited, check pricing.
